@@ -28,9 +28,9 @@ const TodoList = ({ navigation }: StackScreenProps<any>) => {
 
     const EmptyListMessage = () => (
         <List.Item
-            title={'Create todo list'}
+            title={'Task Name: Create todo list'}
             key={'empty_0'}
-            description={'Done'}
+            description={'Status : Done'}
         />
     );
 
@@ -42,7 +42,7 @@ const TodoList = ({ navigation }: StackScreenProps<any>) => {
                 onChangeText={text => setSearchQuery(text)}
             />
             <FlatList
-                data={filteredTodos}
+                data={searchQuery.length > 0 ? filteredTodos : todos}
                 renderItem={({ item }) => <Item item={item} />}
                 keyExtractor={item => item.id}
                 ListEmptyComponent={EmptyListMessage}
